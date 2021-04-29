@@ -2,9 +2,11 @@ import { Entypo, Feather, FontAwesome, Ionicons, MaterialCommunityIcons } from '
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import * as React from 'react';
+import CreateTweetScreen from '../screens/CreateTweetScreen';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import Colors from '../constants/Colors';
-import {getFocusedRouteNameFromRoute, useIsFocused} from '@react-navigation/native'
+import {Button} from 'react-native-elements'
+import {getFocusedRouteNameFromRoute, useIsFocused, useNavigation} from '@react-navigation/native'
 import useColorScheme from '../hooks/useColorScheme';
 import TabOneScreen from '../screens/TabOneScreen';
 import TabTwoScreen from '../screens/TabTwoScreen';
@@ -20,21 +22,10 @@ const BottomTab = createMaterialBottomTabNavigator<BottomTabParamList>();
 
 export default function BottomTabNavigator() {
   const colorScheme = useColorScheme();
-  const routeName = getFocusedRouteNameFromRoute(route) ?? 'Feed';
-  const isFocused = useIsFocused();
 
   let icon = 'feather';
 
-  switch (routeName) {
-    case 'Messages':
-      icon = 'email-plus-outline';
-      break;
-    default:
-      icon = 'feather';
-      break;
-  }
   return (
-   <React.Fragment>
     <BottomTab.Navigator
       initialRouteName="Feed"
       activeColor={Colors[colorScheme].tint}
@@ -68,19 +59,6 @@ export default function BottomTabNavigator() {
 
 
     </BottomTab.Navigator>
-
-    <Portal>
-      <FAB
-      visible={isFocused}
-      icon={icon}
-      style={{
-        position: "absolute",
-        backgroundColor: Colors[colorScheme].tint,
-        bottom: 100,
-        right: 16,
-      }}/>
-    </Portal>
-    </React.Fragment>
   );
 }
 
@@ -95,7 +73,11 @@ function TabBarIcon(props: { name: string; color: string }) {
 const TabOneStack = createStackNavigator<TabOneParamList>();
 
 function TabOneNavigator() {
+  const colorScheme = useColorScheme();
+
+  const navigation = useNavigation();
   return (
+   <React.Fragment>
     <TabOneStack.Navigator>
       <TabOneStack.Screen
         name="HomeScreen"
@@ -119,12 +101,15 @@ function TabOneNavigator() {
         }}
       />
       <TabOneStack.Screen
-      name={icon}
+      name='TweetScreen'
       component={TweetScreen}
       options={{
         headerTitle: 'Tweet'
       }}/>
+
     </TabOneStack.Navigator>
+
+    </React.Fragment>
   );
 }
 

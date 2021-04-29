@@ -1,30 +1,18 @@
 import React, { useState } from 'react';
-import { StyleSheet, Dimensions, View, Text } from 'react-native';
+import { StyleSheet, Dimensions, View, Text, useColorScheme } from 'react-native';
 import Colors from '../constants/Colors';
 import EditScreenInfo from '../components/EditScreenInfo';
 import { SearchBar } from 'react-native-elements';
-
+import { AntDesign } from '@expo/vector-icons';
 const { height, width } = Dimensions.get('screen');
 
 export default function SearchScreen() {
   const [search, setSearch] = useState('');
+  const colorScheme = useColorScheme();
 
   return (
-    <View style={styles.container}>
-      <View style={styles.headerContainer}>
-          <View style={{ alignItems: 'center' }}>
-            <SearchBar
-            placeholder="Type Here..."
-            onChangeText={(text) => setSearch(text)}
-            value={search}
-            lightTheme={true}
-            containerStyle={{
-                width: width / 2,
-                borderRadius: 50,
-            }}
-            />
-          </View>
-      </View>
+    <View style={[styles.container, {backgroundColor: Colors.light.tint}]}>
+      <AntDesign name="twitter" size={60} color="white" />
     </View>
   );
 }
@@ -32,6 +20,8 @@ export default function SearchScreen() {
 const styles = StyleSheet.create({
   container: {
       flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center',
   },
   title: {
     fontSize: 20,

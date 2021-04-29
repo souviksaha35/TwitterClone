@@ -29,6 +29,7 @@ export type TabOneParamList = {
   TabOneScreen: undefined;
   HomeScreen: undefined;
   TweetScreen: undefined;
+  CreateTweet: undefined;
 };
 
 export type TabTwoParamList = {

@@ -18,6 +18,7 @@ import { useState } from 'react';
 import { LandingScreen } from '../screens/LandingScreen';
 import  confirmSignup  from '../screens/confirmSignup';
 import { Auth } from 'aws-amplify';
+import CreateTweetScreen from '../screens/CreateTweetScreen';
 
 const Drawer = createDrawerNavigator();
 
@@ -91,6 +92,7 @@ function RootNavigator() {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name="Root" component={BottomTabNavigator} />
+      <Stack.Screen name="CreateTweet" component={CreateTweetScreen}/>
       <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
     </Stack.Navigator>
   );

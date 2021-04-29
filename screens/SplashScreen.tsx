@@ -1,23 +1,22 @@
+import { AntDesign } from '@expo/vector-icons';
 import React from 'react';
 import { Text, View, StyleSheet, Dimensions } from 'react-native';
 import Colors from  '../constants/Colors';
 
 
-const { height, width } = Dimensions.get('screen');
-
-
 export function SplashScreen() {
     return (
         <View style={styles.container}>
-            
+            <AntDesign name="twitter" size={60} color="white" />
         </View>
     );
 }
 
 const styles = StyleSheet.create({
     container: {
-        height: height,
-        width: width,
-        backgroundColor: Colors.light.tint
+        flex: 1,
+        backgroundColor: Colors.light.tint,
+        justifyContent: "center",
+        alignItems: "center",
     }
 });
