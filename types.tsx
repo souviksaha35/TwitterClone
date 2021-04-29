@@ -4,12 +4,31 @@ export type RootStackParamList = {
 };
 
 export type BottomTabParamList = {
-  TabOne: undefined;
-  TabTwo: undefined;
+  HomeScreen: undefined;
+  Search: undefined;
+  Notifications: undefined;
+  Messages: undefined;
 };
+
+export type User =  {
+  id: string,
+  name: string,
+  username: string,
+  image?: string,
+}
+
+export type TweetType = {
+  id: string,
+  createdAt: string,
+  user: User,
+  content: string,
+  image?: string,
+}
 
 export type TabOneParamList = {
   TabOneScreen: undefined;
+  HomeScreen: undefined;
+  TweetScreen: undefined;
 };
 
 export type TabTwoParamList = {
